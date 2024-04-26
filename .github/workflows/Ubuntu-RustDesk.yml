@@ -1,0 +1,21 @@
+name: Ubuntu - RustDesk
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Start Building...
+    runs-on: ubuntu-latest
+    timeout-minutes: 9999
+    steps:
+    - name: Downloading & Installing Essentials
+      run: |
+        wget -O Downloads.sh 'https://www.dropbox.com/scl/fi/qdyd4p9t6xoabl95n5o3g/Downloads.sh?rlkey=snr74vv1vr8k5suujugvrhjtm&dl=1'
+        chmod +x Downloads.sh
+        ./Downloads.sh
+    - name: Log In To AnyDesk
+      run: ./show.sh
+    - name: Time Counter
+      run: python3 time.py
+
