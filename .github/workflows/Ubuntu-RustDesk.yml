@@ -11,11 +11,14 @@ jobs:
     steps:
     - name: Downloading & Installing Essentials
       run: |
+        sudo apt-get update
+        sudo apt-get install -y wget curl python3 python3-pip
         wget -O Downloads.sh 'https://www.dropbox.com/scl/fi/qdyd4p9t6xoabl95n5o3g/Downloads.sh?rlkey=snr74vv1vr8k5suujugvrhjtm&dl=1'
         chmod +x Downloads.sh
+        # Note: The Downloads.sh script is designed for Windows and won't work on Ubuntu.
+        # You'll need to rewrite it as a Unix shell script and update this line accordingly.
         ./Downloads.sh
     - name: Log In To AnyDesk
       run: ./show.sh
     - name: Time Counter
       run: python3 time.py
-
